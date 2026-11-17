@@ -1,0 +1,83 @@
+{
+  "expo": {
+    "name": "EduQuest",
+    "slug": "eduquest-mobile",
+    "scheme": "eduquest",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1e2138"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "pe.edu.utec.eduquest",
+      "infoPlist": {
+        "NSCameraUsageDescription": "EduQuest usa la cámara para escanear el QR de un grupo y para tomar tu foto de perfil.",
+        "NSLocationWhenInUseUsageDescription": "EduQuest usa tu ubicación para mostrarte el clima y sugerirte cómo organizar tu sesión de estudio.",
+        "NSMotionUsageDescription": "EduQuest usa el acelerómetro para detectar cuando pones el teléfono boca abajo en el modo enfoque.",
+        "NSPhotoLibraryUsageDescription": "EduQuest usa tus fotos para que elijas tu foto de perfil."
+      }
+    },
+    "android": {
+      "package": "pe.edu.utec.eduquest",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1e2138"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.VIBRATE",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ]
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-font",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "EduQuest usa la cámara para escanear el código QR de un grupo de estudio y unirte en un toque."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "EduQuest usa tu ubicación para mostrarte el clima y sugerirte cómo organizar tu sesión de estudio."
+        }
+      ],
+      "@react-native-community/datetimepicker",
+      "expo-audio",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "EduQuest usa tus fotos para que elijas tu foto de perfil.",
+          "cameraPermission": "EduQuest usa la cámara para escanear el QR de un grupo y para tomar tu foto de perfil."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#4F46E5"
+        }
+      ],
+      "expo-web-browser",
+      "expo-video"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9aa1f53b-25a9-4e2b-aee1-df3ccce8d259"
+      }
+    },
+    "owner": "alonsogh23equipo"
+  }
+}
