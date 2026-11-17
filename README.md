@@ -13,8 +13,15 @@ Aplicación móvil de **EduQuest**, una plataforma colaborativa para estudiantes
 
 | Entorno | URL |
 |---|---|
+| APK de Android (EAS Build) | [Instalar EduQuest](https://expo.dev/accounts/alonsogh23equipo/projects/eduquest-mobile/builds/0d4458cd-8e7d-4d46-9699-a79a79f72a07) |
 | API (AWS EC2 + RDS + S3) | https://3-222-104-57.sslip.io/api/v1 |
 | Web (AWS Amplify) | https://main.d2uujuj0mby859.amplifyapp.com |
+
+| Repositorio | Contenido |
+|---|---|
+| [eduquest-mobile](https://github.com/AlonsoGH2306/eduquest-mobile) | Esta aplicación móvil |
+| [eduquest-frontend](https://github.com/Juan-Hello-World/eduquest-frontend) | Aplicación web |
+| [eduquest-backend](https://github.com/Juan-Hello-World/eduquest-backend) | API REST |
 
 ---
 
@@ -213,6 +220,7 @@ Los datos que comparten varias pantallas (sesión, tema, avisos, grupos y materi
 Requisitos: Node.js 20 o superior, la app **Expo Go** en el celular o un emulador Android, y el backend en ejecución.
 
 ```bash
+git clone https://github.com/AlonsoGH2306/eduquest-mobile.git
 cd eduquest-mobile
 npm run setup               # instala dependencias y las alinea con la versión de Expo
 cp .env.example .env        # en Windows: copy .env.example .env
@@ -258,14 +266,27 @@ La app se distribuye como un APK de Android generado con **EAS Build**, el servi
 | URL de la API (en ambos perfiles) | `EXPO_PUBLIC_API_URL=https://3-222-104-57.sslip.io/api/v1` |
 | Identificador de la app | `pe.edu.utec.eduquest` (Android e iOS) |
 
+### APK publicado
+
+| | |
+|---|---|
+| Compilación | [Build `0d4458cd` en Expo](https://expo.dev/accounts/alonsogh23equipo/projects/eduquest-mobile/builds/0d4458cd-8e7d-4d46-9699-a79a79f72a07) · perfil `preview` · versión 1.0.0 (1) |
+| Estado | Compilación exitosa (15 min 40 s) |
+| Instalación | Abrir el enlace desde un celular Android o escanear el QR |
+
+<img src="docs/apk-qr.png" alt="QR para instalar el APK de EduQuest" width="220">
+
+El enlace de instalación está disponible durante 13 días desde la compilación; después se genera un APK nuevo con el comando de la sección siguiente.
+
 ### Generar el APK
 
 ```bash
-npm install -g eas-cli
-eas login
-eas build -p android --profile preview
+npx eas-cli login
+npx eas-cli build -p android --profile preview
 ```
 
-Si la carpeta no es un repositorio git, EAS necesita que antes de compilar se ejecute `$env:EAS_NO_VCS=1` (PowerShell) o `export EAS_NO_VCS=1` (Mac o Linux).
+La primera vez, EAS pregunta si debe generar la firma de Android (*keystore*); se responde que sí y queda guardada en Expo para las siguientes compilaciones.
+
+El proyecto de Expo está conectado a este repositorio de GitHub, así que una vez creada la firma también se puede compilar desde la web de Expo con **Builds → Build from GitHub**.
 
 Para una demostración rápida sin compilar, `npx expo start --tunnel` permite abrir la app en Expo Go desde cualquier red. En ese modo no llegan las notificaciones push, porque Expo Go no las recibe en Android; para probarlas hay que instalar el APK.
